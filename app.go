@@ -8,25 +8,30 @@ import (
 
 func main() {
 
-	// var revenue float64
-	// var expense float64
-	// var taxRate float64
+	var revenue float64
+	var expense float64
+	var taxRate float64
 
-	// // Fetching User Data
-	// fmt.Printf("Revenue: ")
-	// fmt.Scan(&revenue)
+	// Fetching User Data
+	fmt.Printf("Revenue: ")
+	fmt.Scan(&revenue)
 
-	// fmt.Printf("\nExpense: ")
-	// fmt.Scan(&expense)
+	fmt.Printf("\nExpense: ")
+	fmt.Scan(&expense)
 
-	// fmt.Printf("\nTax Rate: ")
-	// fmt.Scan(&taxRate)
+	fmt.Printf("\nTax Rate: ")
+	fmt.Scan(&taxRate)
 
-	// // Calculating Profit
-	// ebt, profit, ratio := calculator.CalculateProfit(revenue, expense, taxRate)
+	// Calculating Profit
+	ebt, profit, ratio := calculator.CalculateProfit(revenue, expense, taxRate)
 
-	// // Use fmt.Printf to print the result with formatting
-	// fmt.Printf("EBT: %.2f profit: %.2f ratio: %.2f\n", ebt, profit, ratio)
+	// Use Backtrick for display
+	fmt.Printf(`EBT: %.2f 
+	profit: %.2f 
+	ratio: %.2f
+	
+	========================================
+	`, ebt, profit, ratio)
 
 	var investmentAmount float64
 	var timeInTears int64
