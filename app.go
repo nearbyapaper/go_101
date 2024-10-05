@@ -1,58 +1,59 @@
 package main
 
 import (
-	"fmt"
-
-	"github.com/nearbyapaper/go_101/calculator"
+	"github.com/nearbyapaper/go_101/demo"
 )
 
 func main() {
 
-	var revenue float64
-	var expense float64
-	var taxRate float64
+	// var revenue float64
+	// var expense float64
+	// var taxRate float64
 
-	// Fetching User Data
-	fmt.Printf("Revenue: ")
-	fmt.Scan(&revenue)
+	// // Fetching User Data
+	// fmt.Printf("Revenue: ")
+	// fmt.Scan(&revenue)
 
-	fmt.Printf("\nExpense: ")
-	fmt.Scan(&expense)
+	// fmt.Printf("\nExpense: ")
+	// fmt.Scan(&expense)
 
-	fmt.Printf("\nTax Rate: ")
-	fmt.Scan(&taxRate)
+	// fmt.Printf("\nTax Rate: ")
+	// fmt.Scan(&taxRate)
 
-	// Calculating Profit
-	ebt, profit, ratio := calculator.CalculateProfit(revenue, expense, taxRate)
+	// // Calculating Profit
+	// ebt, profit, ratio := calculator.CalculateProfit(revenue, expense, taxRate)
 
-	// Use Backtrick for display
-	fmt.Printf(`EBT: %.2f 
-	profit: %.2f 
-	ratio: %.2f
-	
-	========================================
-	`, ebt, profit, ratio)
+	// // Use Backtrick for display
+	// fmt.Printf(`EBT: %.2f
+	// profit: %.2f
+	// ratio: %.2f
 
-	var investmentAmount float64
-	var timeInTears int64
-	var expectedReturnRate float64
-	var inflationRate float64
+	// ========================================
+	// `, ebt, profit, ratio)
 
-	fmt.Printf("InvestmentAmount :")
-	fmt.Scan(&investmentAmount)
+	// var investmentAmount float64
+	// var timeInTears int
+	// var expectedReturnRate float64
+	// var inflationRate float64
 
-	fmt.Printf("\nTime in Years :")
-	fmt.Scan(&timeInTears)
+	// fmt.Printf("InvestmentAmount :")
+	// fmt.Scan(&investmentAmount)
 
-	fmt.Printf("\nExpected Return Rate :")
-	fmt.Scan(&expectedReturnRate)
+	// fmt.Printf("\nTime in Years :")
+	// fmt.Scan(&timeInTears)
 
-	fmt.Printf("\nInflation Rate :")
-	fmt.Scan(&inflationRate)
+	// fmt.Printf("\nExpected Return Rate :")
+	// fmt.Scan(&expectedReturnRate)
 
-	futureValue, realFutureValue := calculator.InvestmentCalculator(investmentAmount, timeInTears, expectedReturnRate, inflationRate)
+	// fmt.Printf("\nInflation Rate :")
+	// fmt.Scan(&inflationRate)
 
-	sFutureValue := fmt.Sprintf("Future Value : %.2f", futureValue)
-	sRealFutureValue := fmt.Sprintf("\nReal Future Value : %.2f", realFutureValue)
-	fmt.Println(sFutureValue, sRealFutureValue)
+	// futureValue, realFutureValue := calculator.InvestmentCalculator(investmentAmount, timeInTears, expectedReturnRate, inflationRate)
+
+	// sFutureValue := fmt.Sprintf("Future Value : %.2f", futureValue)
+	// sRealFutureValue := fmt.Sprintf("\nReal Future Value : %.2f", realFutureValue)
+	// fmt.Println(sFutureValue, sRealFutureValue)
+
+	// fmt.Println("==========================================")
+	demo.BankApp()
 }

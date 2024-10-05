@@ -7,18 +7,32 @@ func CalculateProfit(
 	taxRate float64,
 ) (float64, float64, float64) {
 	// Calculate Earning Before Tax (EBT)
-	ebt := revenue - expense
+	ebt := calculateEBT(revenue, expense)
 
 	// Calculate Earning After Tax (profit)
-	profit := ebt * (1 - taxRate/100)
+	profit := calculateProfit(ebt, taxRate)
 
 	// Calculate Ratio (EBT/profit)
-	var ratio float64
+	ratio := calculateRatio(ebt, profit)
+
+	return ebt, profit, ratio
+}
+
+func calculateEBT(revenue float64, expense float64) (ebt float64) {
+	ebt = revenue - expense
+	return
+}
+
+func calculateProfit(ebt float64, taxRate float64) (profit float64) {
+	profit = ebt * (1 - taxRate/100)
+	return profit
+}
+
+func calculateRatio(ebt float64, profit float64) (ratio float64) {
 	if profit != 0 {
 		ratio = ebt / profit
 	} else {
 		ratio = 0
 	}
-
-	return ebt, profit, ratio
+	return ratio
 }
