@@ -1,6 +1,7 @@
 package demo
 
 import (
+	"errors"
 	"fmt"
 	"os"
 	"strconv"
@@ -10,7 +11,11 @@ const fileName = "balance.txt"
 
 func BankApp() {
 	fmt.Println("Welcome to the Banking Application!")
-	balance := getBalanceFromFile()
+	balance, err := getBalanceFromFile()
+	if err != nil {
+		balance = 0
+		fmt.Println("Error reading balance from file:", err)
+	}
 	writeBalanceToFile(balance)
 
 	for {
@@ -55,12 +60,20 @@ func writeBalanceToFile(balance float64) {
 	os.WriteFile(fileName, data, 0644)
 }
 
-func getBalanceFromFile() float64 {
-	data, _ := os.ReadFile(fileName)
+func getBalanceFromFile() (float64, error) {
+	// data, _ := os.ReadFile(fileName)
 	// _ to tell the program that I know will have data return but I'm not interesting
+	data, err := os.ReadFile(fileName)
+	if err != nil { // nil is special valye from GO. It basically stands for the absence of useful value
+		return 0.0, errors.New("Can't read data from file")
+	}
+
 	balanceText := string(data)
-	balance, _ := strconv.ParseFloat(balanceText, 64)
-	return balance
+	balance, error := strconv.ParseFloat(balanceText, 64)
+	if error != nil {
+		return 0.0, errors.New("Can't convert file data to float")
+	}
+	return balance, nil
 }
 
 func checkBalance(balance float64) {
