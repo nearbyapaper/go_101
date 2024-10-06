@@ -1,3 +1,3 @@
-EBT: 49.00
-Profit: 46.55
-Ratio: 1.05
+EBT: 231889.00
+Profit: 222613.44
+Ratio: 1.04

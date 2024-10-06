@@ -1,10 +1,7 @@
 package main
 
 import (
-	"fmt"
-
-	"github.com/Pallinder/go-randomdata"
-	"github.com/nearbyapaper/go_101/calculator"
+	"github.com/nearbyapaper/go_101/demo"
 )
 
 func main() {
@@ -59,7 +56,9 @@ func main() {
 
 	// fmt.Println("==========================================")
 	// demo.BankApp()
-	fmt.Println("If you want to contact us : ", randomdata.PhoneNumber())
 
-	calculator.CalculateProfit()
+	// fmt.Println("If you want to contact us : ", randomdata.PhoneNumber())
+	// calculator.CalculateProfit()
+
+	demo.Pointers101()
 }
