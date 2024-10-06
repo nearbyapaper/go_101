@@ -36,8 +36,31 @@ func (data user) clearUserName() { // use case It's not work for clear struct
 }
 
 func (data *user) clearUserNameByPointer() { // use case It's work for clear struct by using pointer
+	// (data *user) let this method edit the original Struct
 	data.firstName = ""
 	data.lastName = ""
+}
+
+func newUserPoorWay(firstName string, lastName string, email string, age int, birthDay string) user {
+	return user{
+		firstName:  firstName,
+		lastName:   lastName,
+		email:      email,
+		age:        age,
+		birthDay:   birthDay,
+		createDate: time.Now(),
+	}
+}
+
+func newUserGoodWay(firstName string, lastName string, email string, age int, birthDay string) *user {
+	return &user{
+		firstName:  firstName,
+		lastName:   lastName,
+		email:      email,
+		age:        age,
+		birthDay:   birthDay,
+		createDate: time.Now(),
+	}
 }
 
 func Struct101() {
@@ -69,6 +92,15 @@ func Struct101() {
 	user1.clearUserNameByPointer()
 
 	user1.printUserDetailsByPointer()
+
+	// Poor way to use contructor function
+	user2 := newUserPoorWay("Mohamed", "Salah", "mo_salah@gmail.com", 32, "June 15, 1992")
+	user2.printUserDetails()
+
+	// Good way to use contructor function
+	// var user3 *user
+	user3 := newUserGoodWay("Luis", "Diaz", "lucho@gmail.com", 27, "January 13, 1997")
+	user3.printUserDetails()
 }
 
 // func printUserDetailsByPointer(data *user) {
