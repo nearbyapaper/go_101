@@ -26,8 +26,18 @@ func (data *user) printUserDetailsByPointer() {
 	fmt.Println("====================================================")
 	fmt.Printf("\n%s %s %d years old\n birthday %s\n email : %s\n this information update when %s\n", data.firstName, data.lastName, data.age, data.birthDay, data.email, data.createDate)
 	// but in real process you have to do like this
-	fmt.Println("====================================================")
-	fmt.Printf("\n%s %s %d years old\n birthday %s\n email : %s\n this information update when %s\n", (*data).firstName, (*data).lastName, (*data).age, (*data).birthDay, (*data).email, (*data).createDate)
+	// fmt.Println("====================================================")
+	// fmt.Printf("\n%s %s %d years old\n birthday %s\n email : %s\n this information update when %s\n", (*data).firstName, (*data).lastName, (*data).age, (*data).birthDay, (*data).email, (*data).createDate)
+}
+
+func (data user) clearUserName() { // use case It's not work for clear struct
+	data.firstName = ""
+	data.lastName = ""
+}
+
+func (data *user) clearUserNameByPointer() { // use case It's work for clear struct by using pointer
+	data.firstName = ""
+	data.lastName = ""
 }
 
 func Struct101() {
@@ -54,6 +64,10 @@ func Struct101() {
 	// Print the updated user details
 	fmt.Println("================================Use StructPointer Pass to Function================================")
 	// printUserDetailsByPointer(&user1)
+	// user1.clearUserName() // not working cause not edit real struct
+	fmt.Println("Clear User Name")
+	user1.clearUserNameByPointer()
+
 	user1.printUserDetailsByPointer()
 }
 
