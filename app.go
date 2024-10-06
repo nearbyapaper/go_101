@@ -61,4 +61,6 @@ func main() {
 	// calculator.CalculateProfit()
 
 	demo.Pointers101()
+
+	demo.Struct101()
 }
