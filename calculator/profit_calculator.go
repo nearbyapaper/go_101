@@ -1,16 +1,17 @@
 package calculator
 
 import (
-	"errors"
 	"fmt"
-	"os"
+
+	"github.com/nearbyapaper/go_101/utility"
 )
 
 const fileName = "profit.txt"
 
 // CalculateProfit takes in the cost price, selling price, and discount percentage as input and returns the profit amount.
 func CalculateProfit() {
-	data, err := readFromFile()
+	// data, err := readFromFile()
+	data, err := utility.ReadFromFile(fileName)
 	if err != nil {
 		fmt.Println("Error reading profit from file:", err)
 	} else {
@@ -30,25 +31,30 @@ func CalculateProfit() {
 	// Calculate Ratio (EBT/profit)
 	ratio := calculateRatio(ebt, profit)
 
-	writeProfitToFile(ebt, profit, ratio)
-}
-
-func writeProfitToFile(ebt, profit, ratio float64) {
-	data := []byte(fmt.Sprintf("EBT: %.2f\nProfit: %.2f\nRatio: %.2f\n", ebt, profit, ratio))
-	err := os.WriteFile(fileName, data, 0644)
+	// writeProfitToFile(ebt, profit, ratio)
+	dataString := fmt.Sprintf("EBT: %.2f\nProfit: %.2f\nRatio: %.2f\n", ebt, profit, ratio)
+	err = utility.WriteToFile(fileName, dataString)
 	if err != nil {
 		fmt.Println("Error writing to file:", err)
 	}
 }
 
-func readFromFile() (string, error) {
-	data, err := os.ReadFile(fileName)
-	if err != nil {
-		return "", errors.New("can't read data from file")
-	}
+// func writeProfitToFile(ebt, profit, ratio float64) {
+// 	data := []byte(fmt.Sprintf("EBT: %.2f\nProfit: %.2f\nRatio: %.2f\n", ebt, profit, ratio))
+// 	err := os.WriteFile(fileName, data, 0644)
+// 	if err != nil {
+// 		fmt.Println("Error writing to file:", err)
+// 	}
+// }
 
-	return string(data), nil
-}
+// func readFromFile() (string, error) {
+// 	data, err := os.ReadFile(fileName)
+// 	if err != nil {
+// 		return "", errors.New("can't read data from file")
+// 	}
+
+// 	return string(data), nil
+// }
 
 func getUserInput(prompt string) float64 {
 	var input float64

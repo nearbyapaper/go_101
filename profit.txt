@@ -1,3 +1,3 @@
-ebt : -5354.00
-profit : %!f(MISSING)
-ratio : %!f(MISSING)
+EBT: 49.00
+Profit: 46.55
+Ratio: 1.05

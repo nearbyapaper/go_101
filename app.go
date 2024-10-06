@@ -1,8 +1,6 @@
 package main
 
-import (
-	"github.com/nearbyapaper/go_101/calculator"
-)
+import "github.com/nearbyapaper/go_101/calculator"
 
 func main() {
 
