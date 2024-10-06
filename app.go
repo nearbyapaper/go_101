@@ -1,7 +1,7 @@
 package main
 
 import (
-	"github.com/nearbyapaper/go_101/demo"
+	"github.com/nearbyapaper/go_101/calculator"
 )
 
 func main() {
@@ -55,5 +55,7 @@ func main() {
 	// fmt.Println(sFutureValue, sRealFutureValue)
 
 	// fmt.Println("==========================================")
-	demo.BankApp()
+	// demo.BankApp()
+
+	calculator.CalculateProfit()
 }
