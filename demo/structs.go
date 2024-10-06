@@ -1,8 +1,11 @@
 package demo
 
 import (
+	"errors"
 	"fmt"
 	"time"
+
+	"github.com/nearbyapaper/go_101/utility"
 )
 
 type user struct { // struct blueprints
@@ -63,6 +66,28 @@ func newUserGoodWay(firstName string, lastName string, email string, age int, bi
 	}
 }
 
+func newUser(firstName string, lastName string, email string, age int, birthDay string) (*user, error) {
+
+	if firstName == "" {
+		return nil, errors.New("First Name is required")
+	} else if lastName == "" {
+		return nil, errors.New("Last Name is required")
+	} else if email == "" {
+		return nil, errors.New("Email is required")
+	} else {
+		return nil, errors.New("Birthday is required")
+	}
+
+	return &user{
+		firstName:  firstName,
+		lastName:   lastName,
+		email:      email,
+		age:        age,
+		birthDay:   birthDay,
+		createDate: time.Now(),
+	}, nil
+}
+
 func Struct101() {
 	// Create a new user
 	user1 := user{
@@ -101,6 +126,27 @@ func Struct101() {
 	// var user3 *user
 	user3 := newUserGoodWay("Luis", "Diaz", "lucho@gmail.com", 27, "January 13, 1997")
 	user3.printUserDetails()
+
+	userFirstname := utility.GetUserStringInput("Input your first name :")
+	userLastname := utility.GetUserStringInput("Input your last name :")
+	userEmail := utility.GetUserStringInput("Input your email :")
+	userAge := utility.GetUserIntInput("Input your age :")
+	userBirthday := utility.GetUserStringInput("Input your birthday :")
+
+	user4, error := newUser(
+		userFirstname,
+		userLastname,
+		userEmail,
+		userAge,
+		userBirthday,
+	)
+
+	if error != nil {
+		fmt.Println("Error:", error)
+		return
+	}
+
+	user4.printUserDetails()
 }
 
 // func printUserDetailsByPointer(data *user) {
