@@ -5,7 +5,7 @@ import (
 	"time"
 )
 
-type user struct {
+type user struct { // struct blueprints
 	firstName  string
 	lastName   string
 	email      string
@@ -23,7 +23,7 @@ func Struct101() {
 		age:        30,
 		birthDay:   "1988-05-15",
 		createDate: time.Now(),
-	}
+	} // Literal Notation
 
 	fmt.Println("================================This is Struct101================================")
 	// Print the user details
@@ -35,9 +35,19 @@ func Struct101() {
 	user1.createDate = time.Now()
 
 	// Print the updated user details
-	printUserDetails(user1)
+	fmt.Println("================================Use StructPointer Pass to Function================================")
+	printUserDetailsByPointer(&user1)
 }
 
 func printUserDetails(data user) {
-	fmt.Printf("\n%s %s %d years old\n birthday %s\n email : %s\n this information update when %s", data.firstName, data.lastName, data.age, data.birthDay, data.email, data.createDate)
+	fmt.Printf("\n%s %s %d years old\n birthday %s\n email : %s\n this information update when %s\n", data.firstName, data.lastName, data.age, data.birthDay, data.email, data.createDate)
+}
+
+func printUserDetailsByPointer(data *user) {
+	// in GO Struct have improved you do not have to dereference for access data pointer in struct
+	fmt.Println("====================================================")
+	fmt.Printf("\n%s %s %d years old\n birthday %s\n email : %s\n this information update when %s\n", data.firstName, data.lastName, data.age, data.birthDay, data.email, data.createDate)
+	// but in real process you have to do like this
+	fmt.Println("====================================================")
+	fmt.Printf("\n%s %s %d years old\n birthday %s\n email : %s\n this information update when %s\n", (*data).firstName, (*data).lastName, (*data).age, (*data).birthDay, (*data).email, (*data).createDate)
 }
