@@ -25,8 +25,17 @@ func Pointers101() {
 
 	fmt.Println("Adult year by A way:", getAdultYear(&age))
 	fmt.Println("Adult year by B way:", getAdultYear(agePtr))
+
+	year := 2567
+	fmt.Println("BE Year:", year)
+	convertBEtoAD(&year)
+	fmt.Println("AD Year:", year)
 }
 
 func getAdultYear(age *int) int {
 	return *age - 18
+}
+
+func convertBEtoAD(year *int) {
+	*year = *year - 543 // replace new value (year - 543) to the address of pointer of year variable point to
 }
