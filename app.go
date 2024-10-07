@@ -1,7 +1,10 @@
 package main
 
 import (
+	"fmt"
+
 	"github.com/nearbyapaper/go_101/demo"
+	"github.com/nearbyapaper/go_101/song"
 )
 
 func main() {
@@ -62,5 +65,13 @@ func main() {
 
 	demo.Pointers101()
 
-	demo.Struct101()
+	// demo.Struct101()
+
+	newSong, err := song.New("annie", "wave to earth")
+
+	if err != nil {
+		fmt.Println("Error creating new song:", err)
+		return
+	}
+	newSong.Play()
 }
