@@ -1,6 +1,9 @@
 package song
 
-import "fmt"
+import (
+	"errors"
+	"fmt"
+)
 
 type Song struct {
 	name   string
@@ -11,7 +14,7 @@ type Song struct {
 func New(songName string, artistName string) (*Song, error) {
 	// Validate inputs
 	if songName == "" || artistName == "" {
-		return nil, fmt.Errorf("Song name and artist name cannot be empty")
+		return nil, errors.New("Song name and artist name cannot be empty")
 	}
 
 	// Create a new Song
@@ -36,4 +39,22 @@ func (s Song) Pause() {
 // Method to stop the song (fixed typo)
 func (s Song) Stop() {
 	fmt.Printf("Stopping %s by %s\n", s.name, s.artist)
+}
+
+type Album struct {
+	name string
+	Song
+}
+
+func NewAlbum(name string, newSong *Song) (*Album, error) {
+	if name == "" {
+		return nil, errors.New("name must not be empty")
+	}
+
+	newAlbum := Album{
+		name: name,
+		Song: *newSong,
+	}
+
+	return &newAlbum, nil
 }

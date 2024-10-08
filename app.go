@@ -5,6 +5,7 @@ import (
 
 	"github.com/nearbyapaper/go_101/demo"
 	"github.com/nearbyapaper/go_101/song"
+	"github.com/nearbyapaper/go_101/utility"
 )
 
 func main() {
@@ -74,4 +75,12 @@ func main() {
 		return
 	}
 	newSong.Play()
+
+	albumName := utility.GetUserStringInput("Enter album name :")
+	newAlbum, err := song.NewAlbum(albumName, newSong)
+	if err != nil {
+		fmt.Println("Error creating new album:", err)
+		return
+	}
+	newAlbum.Play()
 }
